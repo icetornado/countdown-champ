@@ -1,0 +1,30 @@
+.App {
+    text-align: center;
+    font-size: 18px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 2px;
+}
+
+.App-title{
+    font-size: 18px;
+}
+
+.Clock-days, .Clock-hours, .Clock-minutes, .Clock-seconds{
+    display: inline;
+    margin:10px;
+}
+/*
+.Clock-hours{
+    display: inline;
+}
+.Clock-minutes{
+    display: inline;
+}
+.Clock-seconds{
+    display: inline;
+}
+*/
+
+.Date-row{
+    margin: 10px 0 10px 5px;
+}
