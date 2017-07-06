@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import './App.css';
 
 class Clock extends Component{
   constructor(props){
     super(props);
-    console.log(props.clockdeadline);
 
     this.state = {
       cnDays: 0,
@@ -17,14 +17,13 @@ class Clock extends Component{
 
   getTimeUntil(deadline) {
     const now = new Date();
-    const dura = deadline.valueOf() - now.valueOf();
+    const dura = moment.duration(deadline.valueOf() - now.valueOf());
 
-    const days = Math.floor(dura / (24 * 60 * 60 * 1000));
     this.setState({
-      cnDays: days,
-      cnHours: Math.floor((dura / (60 * 60 * 100)) - days * 24),
-      cnMinutes: Math.floor((dura / (60 * 1000)) - days * 24 * 60),
-      cnSeconds: Math.floor((dura/1000 - days * 24 * 60 * 60))
+      cnDays: Math.floor(dura.asDays()),
+      cnHours: dura.hours(),
+      cnMinutes: dura.minutes(),
+      cnSeconds: dura.seconds()
     });
   }
 
@@ -35,6 +34,7 @@ class Clock extends Component{
   componentDidMount(){
     setInterval(() => this.getTimeUntil(this.props.clockdeadline), 1000);
   }
+
   render() {
 
     return (
